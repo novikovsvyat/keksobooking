@@ -1,21 +1,15 @@
-const getRandomIntNum = (min, max) => {
-    if (min >= 0 && max > 0 && min <= max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max + 1 - min) + min);
-    } else {
-        return 'Неверный диапазон значений';
-    }
+const getRandomInt = (a, b) => {
+    a = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
+    b = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
+    return Math.floor(Math.random() * (b + 1 - a) + a);
 }
 
-getRandomIntNum(0,5);
+getRandomInt(0,5);
 
-const getRandomFloatNum = (min, max, fract) => {
-    if (min >= 0 && max > 0 && min <= max && fract > 0) {
-    return +(Math.random() * (max - min) + min).toFixed(fract);
-    } else {
-        return 'Неверный диапазон значений';
-    }
+const getRandomFloat = (a, b, fract = 1) => {
+    a = Math.min(Math.abs(a), Math.abs(b));
+    b = Math.max(Math.abs(a), Math.abs(b));
+    return +(Math.random() * (b - a) + a).toFixed((fract > 0) ? fract : fract = 1);
 }
 
-getRandomFloatNum(1.10,1.15,2);
+getRandomFloat(1.10,1.15,2);
